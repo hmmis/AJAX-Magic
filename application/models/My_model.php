@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class My_model extends CI_Model {
 
 	
-	public function get_location($keyword='')
+	public function get_country_list_by_search($keyword='')
 	{
-		$this->db->like('place_name', $keyword, 'both');
-        $sql = $this->db->get('tbl_place');
+		$this->db->like('country_name', $keyword, 'both');
+        $sql = $this->db->get('countries');
         return $sql->result_array();
 	}
 

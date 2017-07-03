@@ -17,14 +17,14 @@ class My_autocomplete extends CI_Controller {
 	public function search_result()
 	{
 		$keyword = $this->input->get('term');
-        $result=$this->my_model->get_location($keyword);
+        $result=$this->my_model->get_country_list_by_search($keyword);
 
         $data_array = array();
 
         foreach ($result as $r) {
             $row_data = array(
-                'label' => $r['place_name'],
-                'value' => $r['place_name'],
+                'label' => $r['country_name'],
+                'value' => $r['country_code'],
                 );
             array_push($data_array, $row_data);
         }
