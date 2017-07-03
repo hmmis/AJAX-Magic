@@ -7,8 +7,16 @@ class My_model extends CI_Model {
 	public function get_location($keyword='')
 	{
 		$this->db->like('place_name', $keyword, 'both');
-        $query = $this->db->get('tbl_place');
-        return $query->result_array();
+        $sql = $this->db->get('tbl_place');
+        return $sql->result_array();
+	}
+
+	public function get_country_list($limit='',$offset='')
+	{
+		$this->db->limit($limit,$offset);
+		$sql=$this->db->get('countries');
+
+		return $sql->result_array();
 	}
 
 }
