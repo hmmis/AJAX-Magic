@@ -54,28 +54,23 @@
 			{
 				url: base+'my_auto_scroll_load/scroll_pagination?page=' + page, //Call Controller
 				type: "get",
-				beforeSend: function()
-				{
+				beforeSend:function(){
 						$('.loding_msg').show();	//Before Return Data Show Loding Message
+				},
+				success:function(result) {
+					if(result){
+						$('.loding_msg').hide();
+	            		$("#autoload_div").append(result); //Append Div with Data
+					}else{
+						$('.loding_msg').html("No more records found");		//Empty Data Messgae
+	                	return;
+					}
+					
+				},
+				error:function(){
+					$('.loding_msg').html("Server not responding...");	//Server Error Message
 				}
 			})
-			.done(function(data)
-			{
-
-				if(data == " "){
-	                $('.loding_msg').html("No more records found");		//Empty Data Messgae
-	                return;
-	            }else{
-	            	$('.loding_msg').hide();
-	            	$("#autoload_div").append(data); //Append Div with Data
-	            }
-	            
-				
-			})
-			.fail(function(jqXHR, ajaxOptions, thrownError)
-			{
-				$('.loding_msg').html("Server not responding...");	//Server Error Message
-			});
 		}
 	</script>
 

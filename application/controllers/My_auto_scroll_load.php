@@ -16,8 +16,10 @@ class My_auto_scroll_load extends CI_Controller {
 		if($page){
 			$offset = (($page-1)* $limit);
 			$data['country_list'] = $this->my_model->get_country_list($limit,$offset);
-			$result = $this->load->view('view_auto_scroll_loaded_div', $data);
-			echo json_encode($result);
+			if ($data['country_list']) {
+				$result = $this->load->view('view_auto_scroll_loaded_div', $data);
+				echo json_encode($result);
+			}
 		}else{
 			$offset = 0;
 			$data['country_list'] =$this->my_model->get_country_list($limit,$offset);
