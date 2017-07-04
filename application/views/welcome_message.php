@@ -2,7 +2,10 @@
 <html>
 <head>
 	<title>Welcome</title>
+	<link rel="icon" href="https://aboutme.imgix.net/background/users/m/i/s/mislam6789_1485627085_89.jpg">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 	<div class="container">
@@ -60,7 +63,15 @@
 									foreach ($own_district_list as $dis): ?>
 										<tr>
 											
-											<td><?php echo $sl_dis++ ?>.<?php echo $dis['bn_name'] ?></td>
+											<td><?php echo $sl_dis++ ?>.
+											<?php if ($dis['lat']): ?>
+												<a href="https://www.google.com/maps/preview/@<?php echo $dis['lat'] ?>,<?php echo $dis['lon'] ?>,10z" target="_blank"><?php echo $dis['bn_name'] ?></a>
+											<?php else: ?>
+												<?php echo $dis['bn_name'] ?>
+											<?php endif ?>
+											<a href="https://<?php echo $dis['website']?>" target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>
+											</td>
+											
 											<td>
 												<!-- Upazilla List -->
 												<?php $own_upazila_list=$this->my_get_data_model->get_upazila_list($dis['id']) ?>
