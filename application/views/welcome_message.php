@@ -7,8 +7,9 @@
 	<h1>Welcome to CodeIgniter!</h1>
 	<a href="<?php echo base_url()?>my_autocomplete/show" target="_blank">Auto Complete</a><br>
 	<a href="<?php echo base_url()?>my_auto_scroll_load/scroll_pagination" target="_blank">Auto Load On Scroll</a><br>
+	<a href="<?php echo base_url()?>my_autoload_on_click/scroll_pagination" target="_blank">Auto Load On Click</a><br>
 
 	<hr>
-	<h4>This Project is created by H M Mohidul Islam Shovon</h4>
+	<h4>This Project is created by -- H M Mohidul Islam Shovon</h4>
 </body>
 </html>
