@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2017 at 07:02 AM
+-- Generation Time: Jul 04, 2017 at 07:53 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `countries` (
   `id` int(11) NOT NULL,
-  `country_code` varchar(2) NOT NULL DEFAULT '',
-  `country_name` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `country_code` varchar(2) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `country_name` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `countries`
