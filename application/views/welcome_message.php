@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome</title>
+	<title>Welcome- Shovon</title>
 	<link rel="icon" href="https://aboutme.imgix.net/background/users/m/i/s/mislam6789_1485627085_89.jpg">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -9,10 +9,11 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Welcome to Ajax Magic!</h1>
+		<h1>Welcome to Ajax Magic!!! Play With Ajax</h1>
 		<a href="<?php echo base_url()?>my_autocomplete/show" target="_blank">Auto Complete</a><br>
 		<a href="<?php echo base_url()?>my_auto_scroll_load/scroll_pagination" target="_blank">Auto Load On Scroll</a><br>
 		<a href="<?php echo base_url()?>my_autoload_on_click/scroll_pagination" target="_blank">Auto Load On Click</a><br>
+		<a href="<?php echo base_url()?>my_on_select_get_data" target="_blank">On Change Show Table</a><br>
 
 		<hr>
 		<h4>This Project is created by -- H M Mohidul Islam Shovon</h4>

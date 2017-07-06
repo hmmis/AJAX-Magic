@@ -18,8 +18,11 @@ class My_get_data_model extends CI_Model {
 		$sql=$this->db->get('divisions');
 		return $sql->result_array();
 	}
-	public function get_district_list($division_id='')
+	public function get_district_list($division_id='',$district_id='')
 	{
+		if ($district_id) {
+			$this->db->where('id', $district_id);
+		}
 		if ($division_id) {
 			$this->db->where('division_id', $division_id);
 		}
