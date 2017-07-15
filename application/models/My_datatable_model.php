@@ -14,19 +14,17 @@ class My_datatable_model extends CI_Model {
     	$this->load->database();
     }
 
-    private function _get_datatables_query()
+    private function get_datatables_for_search_and_order()
     {
     	
-    	$this->db->from($this->table);
-    	
-    	$i = 0;
+    	$loop = 0;
     	
         foreach ($this->column_search as $item) // loop column 
         {
             if($_POST['search']['value']) // if datatable send POST for search
             {
             	
-                if($i===0) // first loop
+                if($loop===0) // first loop
                 {
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
                     $this->db->like($item, $_POST['search']['value']);
@@ -36,10 +34,10 @@ class My_datatable_model extends CI_Model {
                 	$this->db->or_like($item, $_POST['search']['value']);
                 }
                 
-                if(count($this->column_search) - 1 == $i) //last loop
+                if(count($this->column_search) - 1 == $loop) //last loop
                     $this->db->group_end(); //close bracket
                 }
-                $i++;
+                $loop++;
             }
             
         if(isset($_POST['order'])) // here order processing
@@ -53,29 +51,34 @@ class My_datatable_model extends CI_Model {
         }
     }
     
-    function get_datatables()
+    function get_datatables($limit='',$offset='')
     {
-    	$this->_get_datatables_query();
-    	if($_POST['length'] != -1)
-    		$this->db->limit($_POST['length'], $_POST['start']);
-    	$query = $this->db->get();
-    	return $query->result();
+    	$this->get_datatables_for_search_and_order();
+    	if($limit != -1){
+    		$this->db->limit($limit, $offset);
+    	}
+    	$query = $this->db->get($this->table);
+    	return $query->result_array();
     }
     
     function count_filtered()
     {
-    	$this->_get_datatables_query();
-    	$query = $this->db->get();
+    	$this->get_datatables_for_search_and_order();
+    	$query = $this->db->get($this->table);
     	return $query->num_rows();
     }
     
     public function count_all()
     {
+    	
     	$this->db->from($this->table);
     	return $this->db->count_all_results();
     }
 
 }
 
-/* End of file My_datatable_model.php */
-/* Location: ./application/models/My_datatable_model.php */
+/********************End of file********************/
+/**
+ * The File is created by
+ * @ H M Mohidul Islam (Shovon)
+ */

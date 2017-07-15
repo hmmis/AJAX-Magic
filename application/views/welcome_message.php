@@ -15,6 +15,7 @@
 		<a href="<?php echo base_url()?>my_autoload_on_click/scroll_pagination" target="_blank">Auto Load On Click</a><br>
 		<a href="<?php echo base_url()?>my_on_select_get_data" target="_blank">On Change Show Table</a><br>
 		<a href="<?php echo base_url()?>my_on_select_append_data" target="_blank">On Change Append Dropdown</a><br>
+		<a href="<?php echo base_url()?>my_ajax_datatable" target="_blank">Ajax Datatable</a><br>
 
 		<hr>
 		<h4>This Project is created by -- H M Mohidul Islam Shovon</h4>

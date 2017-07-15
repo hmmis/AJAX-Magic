@@ -13,30 +13,37 @@ class My_ajax_datatable extends CI_Controller {
 
 	public function index()
 	{
-		/*$data['country_list']=$this->my_get_data_model->get_country_list();*/
-		$this->load->view('view_ajax_datatable'/*, $data*/);
+		$this->load->view('view_ajax_datatable');
 	}
 
 	public function load_ajax_list()
 	{
-		$list = $this->my_datatable_model->get_datatables();
+		
+        //******************
+        $offset=$this->input->post('start');
+        $limit=$this->input->post('length');
+        //******************
+
+        $list = $this->my_datatable_model->get_datatables($limit,$offset);
         $data = array();
-        $no = $_POST['start'];
+
         foreach ($list as $l) {
-            $no++;
-            $row = array();
-            $row[] = $no;
-            $row[] = $l->country_code;
-            $row[] = $l->country_name;
- 
-            $data[] = $row;
+			$offset++;
+			$row    = array();
+			/*Table Column*/
+			$row[]  = $offset;
+			$row[]  = $l['country_code'];
+			$row[]  = $l['country_name'];
+			$row[]  = "<a href='".base_url()."delete_it/".$l['id']."'>Delete</>";
+			/* End a Table Row */
+			$data[] = $row;
         }
  
         $output = array(
-                        "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->my_datatable_model->count_all(),
-                        "recordsFiltered" => $this->my_datatable_model->count_filtered(),
-                        "data" => $data,
+					"draw"            => $_POST['draw'],	//lengthPage
+					"recordsTotal"    => $this->my_datatable_model->count_all(),			//total Recordes
+					"recordsFiltered" => $this->my_datatable_model->count_filtered(),	//total Recordes with search and order //prginatiom Depands
+					"data"            => $data,
                 );
         //output to json format
         echo json_encode($output);

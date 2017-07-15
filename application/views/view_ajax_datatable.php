@@ -62,6 +62,7 @@ $(document).ready(function() {
                 <th>SL</th>
                 <th>Code</th>
                 <th>Name</th>
+                <th>Delete</th>
             </tr>
         </thead>
 
